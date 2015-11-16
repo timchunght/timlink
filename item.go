@@ -1,8 +1,12 @@
 package main
 
-import "time"
+import (
+	"time"
+	"gopkg.in/mgo.v2/bson"
+)
 
 type Item struct {
+	BID       bson.ObjectId `bson:"_id,omitempty"` 
 	Id        int       `json:"id"`
 	Url       string    `json:"url"`
 	Name      string    `json:"name"`
