@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"tns-restful-json-api/v9/Godeps/_workspace/src/github.com/gorilla/mux"
+	"github.com/gorilla/mux"
 )
 
 func NewRouter() *mux.Router {
