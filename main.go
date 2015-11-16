@@ -9,13 +9,22 @@ import (
 	// "fmt"
 )
 
-var session *mgo.Session
-var err error 
+var (
+
+	session *mgo.Session
+	err error 
+	// db *mgo.Database
+)
+
+func getCollection(collectionName string) *mgo.Collection {
+
+	return session.Copy().DB("timlink_development").C(collectionName)
+}
 // var c *mgo.Collection
 
 func main() {
 	session, err = mgo.Dial("localhost:27017")
-
+	// db = session.DB("timlink_development")
 	if err != nil {
 		panic(err)
 	}

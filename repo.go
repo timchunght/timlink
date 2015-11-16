@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gopkg.in/mgo.v2/bson"
 	"log"
+	"reflect"
 )
 
 var currentId int
@@ -26,8 +27,11 @@ func init() {
 }
 
 func RepoFindItem(id int) Item {
-	c := session.Copy().DB("timlink_development").C("items")
-
+	c := getCollection("items")
+	// db.C("items")
+	// fmt.Println(reflect.TypeOf(session.Copy().DB("timlink_development")))
+	fmt.Println(reflect.TypeOf(c))
+	
 	result := Item{}
 	err = c.Find(bson.M{"name": "Write presentation mongo"}).One(&result)
 	if err != nil {
