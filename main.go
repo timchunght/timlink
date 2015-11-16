@@ -22,7 +22,7 @@ func getCollection(collectionName string) *mgo.Collection {
 
 
 func main() {
-	connection.ConnectDb()
+	connection.Connect()
 	router := NewRouter()
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 
