@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
 )
@@ -13,33 +12,21 @@ var items Items
 
 // Give us some seed data
 func init() {
-	session, err := mgo.Dial("localhost:27017")
 
-	session.SetMode(mgo.Monotonic, true)
-
-	c := session.DB("timlink_development").C("items")
+	c := mongodbSession.Copy().DB("timlink_development").C("items")
 
 	err = c.Insert(&Item{Name: "Write presentation mongo"},
-								 &Item{Name: "Host meetup mongo"})
+		&Item{Name: "Host meetup mongo"})
 	if err != nil {
 		log.Fatal(err)
 	}
-
 
 	RepoCreateItem(Item{Name: "Write presentation"})
 	RepoCreateItem(Item{Name: "Host meetup"})
 }
 
 func RepoFindItem(id int) Item {
-	session, err := mgo.Dial("localhost:27017")
-
-	if err != nil {
-		panic(err)
-	}
-
-	session.SetMode(mgo.Monotonic, true)
-
-	c := session.DB("timlink_development").C("items")
+	c := mongodbSession.Copy().DB("timlink_development").C("items")
 
 	result := Item{}
 	err = c.Find(bson.M{"name": "Write presentation mongos"}).One(&result)
