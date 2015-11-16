@@ -13,23 +13,23 @@ var items Items
 // Give us some seed data
 func init() {
 
-	c := mongodbSession.Copy().DB("timlink_development").C("items")
+	// c := mongodbSession.Copy().DB("timlink_development").C("items")
 
-	err = c.Insert(&Item{Name: "Write presentation mongo"},
-		&Item{Name: "Host meetup mongo"})
-	if err != nil {
-		log.Fatal(err)
-	}
+	// err = c.Insert(&Item{Name: "Write presentation mongo"},
+	// 	&Item{Name: "Host meetup mongo"})
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	RepoCreateItem(Item{Name: "Write presentation"})
-	RepoCreateItem(Item{Name: "Host meetup"})
+	// RepoCreateItem(Item{Name: "Write presentation"})
+	// RepoCreateItem(Item{Name: "Host meetup"})
 }
 
 func RepoFindItem(id int) Item {
-	c := mongodbSession.Copy().DB("timlink_development").C("items")
+	c := session.Copy().DB("timlink_development").C("items")
 
 	result := Item{}
-	err = c.Find(bson.M{"name": "Write presentation mongos"}).One(&result)
+	err = c.Find(bson.M{"name": "Write presentation mongo"}).One(&result)
 	if err != nil {
 		return result
 		log.Fatal(err)
