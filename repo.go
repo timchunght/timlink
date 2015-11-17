@@ -28,8 +28,6 @@ func init() {
 
 func RepoFindItem(id int) Item {
 	c := getCollection("items")
-	// db.C("items")
-	// fmt.Println(reflect.TypeOf(session.Copy().DB("timlink_development")))
 	fmt.Println(reflect.TypeOf(c))
 	
 	result := Item{}
@@ -43,19 +41,19 @@ func RepoFindItem(id int) Item {
 }
 
 //this is bad, I don't think it passes race condtions
-func RepoCreateItem(t Item) Item {
-	currentId += 1
-	t.Id = currentId
-	items = append(items, t)
-	return t
-}
+// func RepoCreateItem(t Item) Item {
+// 	currentId += 1
+// 	t.Id = currentId
+// 	items = append(items, t)
+// 	return t
+// }
 
-func RepoDestroyItem(id int) error {
-	for i, t := range items {
-		if t.Id == id {
-			items = append(items[:i], items[i+1:]...)
-			return nil
-		}
-	}
-	return fmt.Errorf("Could not find Item with id of %d to delete", id)
-}
+// func RepoDestroyItem(id int) error {
+// 	for i, t := range items {
+// 		if t.Id == id {
+// 			items = append(items[:i], items[i+1:]...)
+// 			return nil
+// 		}
+// 	}
+// 	return fmt.Errorf("Could not find Item with id of %d to delete", id)
+// }

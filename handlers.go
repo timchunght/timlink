@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
-	// "gopkg.in/mgo.v2/bson"
 	"github.com/gorilla/mux"
 )
 
@@ -31,7 +30,7 @@ func ItemShow(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	item := RepoFindItem(itemId)
-	if item.BID != ""{
+	if item.Id != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(item)
@@ -73,7 +72,8 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	t := RepoCreateItem(item)
+	t := Item{}
+	// RepoCreateItem(item)
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(t); err != nil {
