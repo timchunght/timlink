@@ -31,7 +31,7 @@ func RepoFindItem(id int) Item {
 	fmt.Println(reflect.TypeOf(c))
 	
 	result := Item{}
-	err = c.Find(bson.M{"name": "Write presentation mongo"}).One(&result)
+	err = c.Find(bson.M{"name": "helloworld"}).One(&result)
 	if err != nil {
 		return result
 		log.Fatal(err)
@@ -41,12 +41,16 @@ func RepoFindItem(id int) Item {
 }
 
 //this is bad, I don't think it passes race condtions
-// func RepoCreateItem(t Item) Item {
-// 	currentId += 1
-// 	t.Id = currentId
-// 	items = append(items, t)
-// 	return t
-// }
+func RepoCreateItem(t Item) Item {
+	c := getCollection("items")
+
+	err = c.Insert(t)
+	if err != nil {
+		return Item{}
+		log.Fatal(err)
+	}
+	return t
+}
 
 // func RepoDestroyItem(id int) error {
 // 	for i, t := range items {
