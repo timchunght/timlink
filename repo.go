@@ -1,42 +1,19 @@
 package main
 
 import (
-	"fmt"
 	"gopkg.in/mgo.v2/bson"
 	"log"
-	"reflect"
+	// "reflect"
 )
 
-var currentId int
-
-var items Items
-
-// Give us some seed data
-func init() {
-
-	// c := mongodbSession.Copy().DB("timlink_development").C("items")
-
-	// err = c.Insert(&Item{Name: "Write presentation mongo"},
-	// 	&Item{Name: "Host meetup mongo"})
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// RepoCreateItem(Item{Name: "Write presentation"})
-	// RepoCreateItem(Item{Name: "Host meetup"})
-}
-
-func RepoFindItem(id int) Item {
-	c := getCollection("items")
-	fmt.Println(reflect.TypeOf(c))
-	
+func RepoFindItem(id string) Item {
+	c := getCollection("items")	
 	result := Item{}
-	err = c.Find(bson.M{"name": "helloworld"}).One(&result)
+	err = c.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result)
 	if err != nil {
 		return result
 		log.Fatal(err)
 	}
-	fmt.Println(result.Name)
 	return result
 }
 
