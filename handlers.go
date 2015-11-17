@@ -12,11 +12,16 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func ItemIndex(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	// w.WriteHeader(http.StatusOK)
-	// if err := json.NewEncoder(w).Encode(items); err != nil {
-	// 	panic(err)
-	// }
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+	items := RepoAllItems()
+	if len(items) != 0 {
+		if err := json.NewEncoder(w).Encode(items); err != nil {
+			panic(err)
+		}
+	} else{
+		w.Write([]byte("[]"))
+	}
 }
 
 func ItemShow(w http.ResponseWriter, r *http.Request) {

@@ -4,7 +4,20 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"log"
 	// "reflect"
+	// "fmt"
 )
+
+func RepoAllItems() []Item {
+	var items []Item
+
+	result := getCollection("items").Find(nil).All(&items)
+	if result == nil {
+		return items
+	} else {
+	// fmt.Println(reflect.TypeOf(result))
+		return items
+	}
+}
 
 func RepoFindItem(id string) Item {
 	c := getCollection("items")	
