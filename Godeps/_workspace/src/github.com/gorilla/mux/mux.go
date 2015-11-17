@@ -11,7 +11,7 @@ import (
 	"path"
 	"regexp"
 
-	"tns-restful-json-api/v9/Godeps/_workspace/src/github.com/gorilla/context"
+	"timlink/Godeps/_workspace/src/github.com/gorilla/context"
 )
 
 // NewRouter returns a new router instance.

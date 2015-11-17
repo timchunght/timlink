@@ -1,5 +1,5 @@
 {
-	"ImportPath": "tns-restful-json-api/v9",
+	"ImportPath": "timlink",
 	"GoVersion": "go1.5",
 	"Deps": [
 		{
@@ -9,6 +9,15 @@
 		{
 			"ImportPath": "github.com/gorilla/mux",
 			"Rev": "9c068cf16d982f8bd444b8c352acbeec34c4fe5b"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2",
+			"Comment": "r2015.10.05-1-g4d04138",
+			"Rev": "4d04138ffef2791c479c0c8bbffc30b34081b8d9"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "53feefa2559fb8dfa8d81baad31be332c97d6c77"
 		}
 	]
 }

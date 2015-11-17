@@ -4,28 +4,22 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
 	"timlink/connection"
-	"gopkg.in/mgo.v2"
 	// "fmt"
 )
 
-
-
 var (
 	session *mgo.Session
-	err error 
+	err     error
 	// db *mgo.Database
 	// col *mgo.Collection
 )
 
-func getCollection(collectionName string) *mgo.Collection {
-
-	return connection.Session.Copy().DB(connection.DbConf.Database).C(collectionName)
-}
 
 
 func main() {
-  
+
 	connection.Connect()
 	router := NewRouter()
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))

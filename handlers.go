@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"github.com/gorilla/mux"
+	"timlink/Godeps/_workspace/src/github.com/gorilla/mux"
+	"timlink/models"
+	// "timlink/connection"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -14,12 +16,12 @@ func Index(w http.ResponseWriter, r *http.Request) {
 func ItemIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
-	items := RepoAllItems()
+	items := models.RepoAllItems()
 	if len(items) != 0 {
 		if err := json.NewEncoder(w).Encode(items); err != nil {
 			panic(err)
 		}
-	} else{
+	} else {
 		w.Write([]byte("[]"))
 	}
 }
@@ -27,10 +29,10 @@ func ItemIndex(w http.ResponseWriter, r *http.Request) {
 func ItemShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	itemId := string(vars["itemId"])
-	item := RepoFindItem(itemId);
-	
+	item := models.RepoFindItem(itemId)
+
 	if item.Id != "" {
-		
+
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(item)
@@ -46,9 +48,9 @@ func ItemShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func ItemCreate(w http.ResponseWriter, r *http.Request) {
-	var item Item
+	var item models.Item
 	fmt.Println(item)
-	
+
 	name := r.URL.Query().Get("name")
 	url := r.URL.Query().Get("url")
 
@@ -56,7 +58,7 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 		item.Name = string(name)
 		item.Url = string(url)
 
-		t := RepoCreateItem(item)
+		t := models.RepoCreateItem(item)
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusCreated)
 		if err := json.NewEncoder(w).Encode(t); err != nil {
@@ -69,17 +71,15 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url and name param required"}); err != nil {
 			panic(err)
 		}
-		
-		
+
 	}
 }
-
 
 func ItemDestroy(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("adsad")
 	vars := mux.Vars(r)
 	itemId := string(vars["itemId"])
-	err := RepoDestroyItem(itemId);
+	err := models.RepoDestroyItem(itemId)
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	if err == nil {
 
@@ -95,7 +95,7 @@ func ItemDestroy(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// if item.Id != "" {
-		
+
 	// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	// 	w.WriteHeader(http.StatusOK)
 	// 	json.NewEncoder(w).Encode(item)

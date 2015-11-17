@@ -1,9 +1,10 @@
 package connection
 
 import (
-	"gopkg.in/mgo.v2"
+
+	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
 	"log"
-	"gopkg.in/yaml.v2"
+	"timlink/Godeps/_workspace/src/gopkg.in/yaml.v2"
 	// "fmt"
 	"io/ioutil"
   "path/filepath"
@@ -41,4 +42,8 @@ func Connect() {
 	log.Printf("%s\t%s", "connected to", host)
 }
 
+func GetCollection(collectionName string) *mgo.Collection {
+
+	return Session.Copy().DB(DbConf.Database).C(collectionName)
+}
 
