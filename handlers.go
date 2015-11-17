@@ -49,7 +49,7 @@ func ItemShow(w http.ResponseWriter, r *http.Request) {
 
 func ItemCreate(w http.ResponseWriter, r *http.Request) {
 	var item models.Item
-	fmt.Println(item)
+	// fmt.Println(item)
 
 	name := r.URL.Query().Get("name")
 	url := r.URL.Query().Get("url")
@@ -58,7 +58,7 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 		item.Name = string(name)
 		item.Url = string(url)
 
-		t := models.RepoCreateItem(item)
+		t := item.RepoCreateItem()
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusCreated)
 		if err := json.NewEncoder(w).Encode(t); err != nil {
@@ -76,7 +76,7 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 }
 
 func ItemDestroy(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("adsad")
+	// fmt.Println("adsad")
 	vars := mux.Vars(r)
 	itemId := string(vars["itemId"])
 	err := models.RepoDestroyItem(itemId)
