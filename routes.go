@@ -33,7 +33,13 @@ var routes = Routes{
 	Route{
 		"ItemShow",
 		"GET",
-		"/item/{itemId}",
+		"/items/{itemId}",
 		ItemShow,
+	},
+	Route{
+		"ItemDestroy",
+		"DELETE",
+		"/items/{itemId}",
+		ItemDestroy,
 	},
 }

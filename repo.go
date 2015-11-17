@@ -45,12 +45,14 @@ func RepoCreateItem(t Item) Item {
 	return t
 }
 
-// func RepoDestroyItem(id int) error {
-// 	for i, t := range items {
-// 		if t.Id == id {
-// 			items = append(items[:i], items[i+1:]...)
-// 			return nil
-// 		}
-// 	}
-// 	return fmt.Errorf("Could not find Item with id of %d to delete", id)
-// }
+func RepoDestroyItem(id string) error {
+	
+	// if t.Id == id {
+	// 	items = append(items[:i], items[i+1:]...)
+	// 	return nil
+	// }
+	return getCollection("items").Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+
+
+	
+}

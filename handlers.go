@@ -73,3 +73,39 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 		
 	}
 }
+
+
+func ItemDestroy(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("adsad")
+	vars := mux.Vars(r)
+	itemId := string(vars["itemId"])
+	err := RepoDestroyItem(itemId);
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	if err == nil {
+
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`"message": "item successfully removed"}`))
+		return
+	} else {
+
+		w.WriteHeader(http.StatusOK)
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Error removing item"}); err != nil {
+			panic(err)
+		}
+		return
+	}
+	// if item.Id != "" {
+		
+	// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	// 	w.WriteHeader(http.StatusOK)
+	// 	json.NewEncoder(w).Encode(item)
+	// } else {
+
+	// 	// If we didn't find it, 404
+	// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	// 	w.WriteHeader(http.StatusNotFound)
+	// 	if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
+	// 		panic(err)
+	// 	}
+	// }
+}
