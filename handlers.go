@@ -25,87 +25,87 @@ Sample Response:
 	fmt.Fprint(w, welcome_message)
 }
 
-func ItemIndex(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
-	items := models.RepoAllItems()
-	if len(items) != 0 {
-		if err := json.NewEncoder(w).Encode(items); err != nil {
-			panic(err)
-		}
-	} else {
-		w.Write([]byte("[]"))
-	}
-}
+// func ItemIndex(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 	w.WriteHeader(http.StatusOK)
+// 	items := models.RepoAllItems()
+// 	if len(items) != 0 {
+// 		if err := json.NewEncoder(w).Encode(items); err != nil {
+// 			panic(err)
+// 		}
+// 	} else {
+// 		w.Write([]byte("[]"))
+// 	}
+// }
 
-func ItemShow(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	itemId := string(vars["itemId"])
-	item := models.RepoFindItem(itemId)
+// func ItemShow(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	itemId := string(vars["itemId"])
+// 	item := models.RepoFindItem(itemId)
 
-	if item.Id != "" {
+// 	if item.Id != "" {
 
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(item)
-	} else {
+// 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 		w.WriteHeader(http.StatusOK)
+// 		json.NewEncoder(w).Encode(item)
+// 	} else {
 
-		// If we didn't find it, 404
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusNotFound)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
-			panic(err)
-		}
-	}
-}
+// 		// If we didn't find it, 404
+// 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 		w.WriteHeader(http.StatusNotFound)
+// 		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
+// 			panic(err)
+// 		}
+// 	}
+// }
 
-func ItemCreate(w http.ResponseWriter, r *http.Request) {
-	var item models.Item
-	// fmt.Println(item)
+// func ItemCreate(w http.ResponseWriter, r *http.Request) {
+// 	var item models.Item
+// 	// fmt.Println(item)
 
-	url := r.URL.Query().Get("url")
+// 	url := r.URL.Query().Get("url")
 
-	if url != "" {
-		item.Url = string(url)
+// 	if url != "" {
+// 		item.Url = string(url)
 
-		t := item.RepoCreateItem()
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusCreated)
-		if err := json.NewEncoder(w).Encode(t); err != nil {
-			panic(err)
-		}
-	} else {
-		code := http.StatusNotFound
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(code)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url and name param required"}); err != nil {
-			panic(err)
-		}
+// 		t := item.RepoCreateItem()
+// 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 		w.WriteHeader(http.StatusCreated)
+// 		if err := json.NewEncoder(w).Encode(t); err != nil {
+// 			panic(err)
+// 		}
+// 	} else {
+// 		code := http.StatusNotFound
+// 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 		w.WriteHeader(code)
+// 		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url and name param required"}); err != nil {
+// 			panic(err)
+// 		}
 
-	}
-}
+// 	}
+// }
 
-func ItemDestroy(w http.ResponseWriter, r *http.Request) {
-	// fmt.Println("adsad")
-	vars := mux.Vars(r)
-	itemId := string(vars["itemId"])
-	err := models.RepoDestroyItem(itemId)
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	if err == nil {
+// func ItemDestroy(w http.ResponseWriter, r *http.Request) {
+// 	// fmt.Println("adsad")
+// 	vars := mux.Vars(r)
+// 	itemId := string(vars["itemId"])
+// 	err := models.RepoDestroyItem(itemId)
+// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+// 	if err == nil {
 
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`"message": "item successfully removed"}`))
-		return
-	} else {
+// 		w.WriteHeader(http.StatusOK)
+// 		w.Write([]byte(`"message": "item successfully removed"}`))
+// 		return
+// 	} else {
 
-		w.WriteHeader(http.StatusOK)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Error removing item"}); err != nil {
-			panic(err)
-		}
-		return
-	}
+// 		w.WriteHeader(http.StatusOK)
+// 		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Error removing item"}); err != nil {
+// 			panic(err)
+// 		}
+// 		return
+// 	}
 
-}
+// }
 
 func LinkCreate(w http.ResponseWriter, r *http.Request) {
 	var link models.Link
