@@ -127,7 +127,7 @@ func LinkCreate(w http.ResponseWriter, r *http.Request) {
 		code := http.StatusNotFound
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(code)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url param required"}); err != nil {
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url param required i.e. ?url=http://google.com"}); err != nil {
 			panic(err)
 		}
 
@@ -150,7 +150,7 @@ func LinkShow(w http.ResponseWriter, r *http.Request) {
 		// If we didn't find it, 404
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusNotFound)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Link Not Found"}); err != nil {
 			panic(err)
 		}
 	}
@@ -169,7 +169,7 @@ func LinkRedirect(w http.ResponseWriter, r *http.Request) {
 		// If we didn't find it, 404
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusNotFound)
-		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Link Not Found"}); err != nil {
 			panic(err)
 		}
 	}
