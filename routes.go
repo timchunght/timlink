@@ -54,5 +54,11 @@ var routes = Routes{
 		"/links/{shortUrl}",
 		LinkShow,
 	},
+	Route{
+		"LinkRedirect",
+		"GET",
+		"/{shortUrl}",
+		LinkRedirect,
+	},
 
 }
