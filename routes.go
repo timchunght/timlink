@@ -45,7 +45,7 @@ var routes = Routes{
 	Route{
 		"LinkCreate",
 		"POST",
-		"/links",
+		"/shorten",
 		LinkCreate,
 	},
 	Route{

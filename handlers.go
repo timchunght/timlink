@@ -12,7 +12,7 @@ import (
 func Index(w http.ResponseWriter, r *http.Request) {
 	welcome_message := `Welcome! This is the simpliest url shortener API
 
-POST   /links?url=your_url
+POST   /shorten?url=your_url
 Sample Response:
 {
   "id": "564d422037f69f505565dc64",
