@@ -10,7 +10,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Welcome!\n")
+	fmt.Fprint(w, "Welcome! This is the simpliest url shortener API\nPOST   /links?url=your_url")
 }
 
 func ItemIndex(w http.ResponseWriter, r *http.Request) {
@@ -92,20 +92,7 @@ func ItemDestroy(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	// if item.Id != "" {
 
-	// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	// 	w.WriteHeader(http.StatusOK)
-	// 	json.NewEncoder(w).Encode(item)
-	// } else {
-
-	// 	// If we didn't find it, 404
-	// 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	// 	w.WriteHeader(http.StatusNotFound)
-	// 	if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 }
 
 func LinkCreate(w http.ResponseWriter, r *http.Request) {
@@ -118,6 +105,7 @@ func LinkCreate(w http.ResponseWriter, r *http.Request) {
 		link.Url = string(url)
 
 		l := link.RepoCreateLink()
+		l.ShortUrl = r.Host + "/" + l.Hash
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusCreated)
 		if err := json.NewEncoder(w).Encode(l); err != nil {
@@ -136,14 +124,15 @@ func LinkCreate(w http.ResponseWriter, r *http.Request) {
 
 func LinkShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	shortUrl := string(vars["shortUrl"])
-	link := models.RepoFindLink(shortUrl)
+	hash := string(vars["hash"])
+	l := models.RepoFindLink(hash)
 
-	if link.Id != "" {
+	if l.Id != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(link)
-		
+		l.ShortUrl = r.Host + "/" + l.Hash
+		json.NewEncoder(w).Encode(l)
+
 	} else {
 
 		// If we didn't find it, 404
@@ -157,8 +146,8 @@ func LinkShow(w http.ResponseWriter, r *http.Request) {
 
 func LinkRedirect(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	shortUrl := string(vars["shortUrl"])
-	link := models.RepoFindLink(shortUrl)
+	hash := string(vars["hash"])
+	link := models.RepoFindLink(hash)
 
 	if link.Id != "" {
 		http.Redirect(w, r, link.Url, 301)

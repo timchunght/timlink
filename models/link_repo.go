@@ -19,10 +19,10 @@ func RepoAllLinks() []Link {
 	}
 }
 
-func RepoFindLink(shortUrl string) Link {
+func RepoFindLink(hash string) Link {
 	c := connection.GetCollection("links")
 	result := Link{}
-	err := c.Find(bson.M{"short_url": shortUrl}).One(&result)
+	err := c.Find(bson.M{"hash": hash}).One(&result)
 	if err != nil {
 		return result
 		log.Fatal(err)
@@ -36,16 +36,16 @@ func (l Link) RepoCreateLink() Link {
 	l.Id = bson.NewObjectId()
 	l.CreatedAt = time.Now()
 
-	// This while loop ensures there is duplicate ShortUrl
+	// This while loop ensures there is duplicate Hash
 	for {
 
-		shortUrl := helpers.RandomString(6)
-		count, _ := c.Find(bson.M{"short_url": shortUrl}).Count()
+		hash := helpers.RandomString(6)
+		count, _ := c.Find(bson.M{"hash": hash}).Count()
 		if count > 0 {
 
 		} else {
 
-			l.ShortUrl = shortUrl
+			l.Hash = hash
 			break
 		}
 	}
@@ -56,6 +56,7 @@ func (l Link) RepoCreateLink() Link {
 		return Link{}
 		log.Fatal(err)
 	}
+	// l.ShortUrl = "http://localhos"
 	return l
 }
 

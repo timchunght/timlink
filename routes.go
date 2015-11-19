@@ -51,13 +51,13 @@ var routes = Routes{
 	Route{
 		"LinkShow",
 		"GET",
-		"/links/{shortUrl}",
+		"/links/{hash}",
 		LinkShow,
 	},
 	Route{
 		"LinkRedirect",
 		"GET",
-		"/{shortUrl}",
+		"/{hash}",
 		LinkRedirect,
 	},
 
