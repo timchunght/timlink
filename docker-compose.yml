@@ -1,7 +1,7 @@
 web:
   build: .
-  command: 'bash -c ''/go/bin/timlink'''
-  working_dir: /go/src/github.com/timchunght/timlink
+  command: 'bash -c ''/go/src/timlink/timlink'''
+  working_dir: /go/src/timlink
   environment:
     PORT: 8080
     MONGO_URL: 'mongolab:27017'
