@@ -35,9 +35,9 @@ func Connect() {
 	log.Printf("%s\t%s", "connected to", url)
 }
 
-func GetCollection(collectionName string) *mgo.Collection {
-
-	return Session.Copy().DB(DbConf.Database).C(collectionName)
+func GetCollection(collectionName string, session *mgo.Session) *mgo.Collection {
+	session = Session.Copy()
+	return session.DB(DbConf.Database).C(collectionName)
 }
 
 func (dbConf *DbConfig) parseConfig() {
