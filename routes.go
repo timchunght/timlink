@@ -42,4 +42,17 @@ var routes = Routes{
 		"/items/{itemId}",
 		ItemDestroy,
 	},
+	Route{
+		"LinkCreate",
+		"POST",
+		"/links",
+		LinkCreate,
+	},
+	Route{
+		"LinkShow",
+		"GET",
+		"/links/{shortUrl}",
+		LinkShow,
+	},
+
 }

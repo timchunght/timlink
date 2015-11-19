@@ -107,3 +107,50 @@ func ItemDestroy(w http.ResponseWriter, r *http.Request) {
 	// 	}
 	// }
 }
+
+func LinkCreate(w http.ResponseWriter, r *http.Request) {
+	var link models.Link
+	// fmt.Println(item)
+
+	url := r.URL.Query().Get("url")
+
+	if url != "" {
+		link.Url = string(url)
+
+		l := link.RepoCreateLink()
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusCreated)
+		if err := json.NewEncoder(w).Encode(l); err != nil {
+			panic(err)
+		}
+	} else {
+		code := http.StatusNotFound
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(code)
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: code, Text: "url param required"}); err != nil {
+			panic(err)
+		}
+
+	}
+}
+
+func LinkShow(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	shortUrl := string(vars["shortUrl"])
+	link := models.RepoFindLink(shortUrl)
+
+	if link.Id != "" {
+		http.Redirect(w, r, link.Url, 301)
+		// w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		// w.WriteHeader(http.StatusOK)
+		// json.NewEncoder(w).Encode(link)
+	} else {
+
+		// If we didn't find it, 404
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusNotFound)
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Item Not Found"}); err != nil {
+			panic(err)
+		}
+	}
+}

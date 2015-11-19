@@ -6,8 +6,6 @@ import (
 	"os"
 	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
 	"timlink/connection"
-
-	// "fmt"
 )
 
 var (
@@ -17,11 +15,13 @@ var (
 	// col *mgo.Collection
 )
 
-
-
 func main() {	
+
 	connection.Connect()
 	router := NewRouter()
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 
 }
+
+
+
