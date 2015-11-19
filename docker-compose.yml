@@ -1,3 +1,9 @@
+haproxy:
+  image: tutum/haproxy
+  links:
+   - web
+  ports:
+   - '80:80'
 web:
   build: .
   command: 'bash -c ''/go/bin/timlink'''
