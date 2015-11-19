@@ -1,6 +1,6 @@
 web:
   build: .
-  command: 'bash -c ''/go/src/timlink/timlink'''
+  command: 'bash -c ''/go/bin/timlink'''
   working_dir: /go/src/timlink
   environment:
     PORT: 8080
@@ -11,5 +11,5 @@ web:
   links:
     - mongolab
 mongolab:
-  image: mongo
+  image: mongo:3.0.4
 
