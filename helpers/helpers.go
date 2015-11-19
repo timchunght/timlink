@@ -2,7 +2,7 @@ package helpers
 
 import (
 	"math/rand"
-  "time"
+	"time"
 )
 
 func RandomString(strlen int) string {

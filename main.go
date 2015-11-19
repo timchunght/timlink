@@ -15,13 +15,10 @@ var (
 	// col *mgo.Collection
 )
 
-func main() {	
+func main() {
 
 	connection.Connect()
 	router := NewRouter()
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 
 }
-
-
-
