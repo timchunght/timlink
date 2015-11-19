@@ -13,7 +13,7 @@ web:
     MONGO_URL: 'mongolab:27017'
     GO_ENV: 'production'
   ports:
-    - '8080:8080'
+    - '8080'
   links:
     - mongolab
 mongolab:
