@@ -10,7 +10,19 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Welcome! This is the simpliest url shortener API\nPOST   /links?url=your_url")
+	welcome_message := `Welcome! This is the simpliest url shortener API
+
+POST   /links?url=your_url
+Sample Response:
+{
+  "id": "564d422037f69f505565dc64",
+  "url": "https://www.google.com",
+  "hash": "dayYGs",
+  "short_url": "localhost:9000/dayYGs",
+  "created_at": "2015-11-18T22:29:36.900194106-05:00"
+}
+											`
+	fmt.Fprint(w, welcome_message)
 }
 
 func ItemIndex(w http.ResponseWriter, r *http.Request) {
