@@ -1,7 +1,7 @@
 package connection
 
 import (
-	"github.com/joho/godotenv"
+	"timlink/Godeps/_workspace/src/github.com/joho/godotenv"
 	"log"
 	"os"
 	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"

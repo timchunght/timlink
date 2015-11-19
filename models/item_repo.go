@@ -5,9 +5,9 @@ import (
 	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 	"timlink/connection"
 	"time"
-	"github.com/yhat/scrape"
-  "golang.org/x/net/html"
-  "golang.org/x/net/html/atom"
+	"timlink/Godeps/_workspace/src/github.com/yhat/scrape"
+  "timlink/Godeps/_workspace/src/golang.org/x/net/html"
+  "timlink/Godeps/_workspace/src/golang.org/x/net/html/atom"
   "net/http"
 	// "reflect"
 )
