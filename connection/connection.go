@@ -42,9 +42,11 @@ func GetCollection(collectionName string) *mgo.Collection {
 
 func (dbConf *DbConfig) parseConfig() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if os.Getenv("GO_ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
 	// Expected Url to be in the following format
 	// "mongodb://localhost:27017"

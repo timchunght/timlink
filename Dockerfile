@@ -8,7 +8,6 @@ ADD . /go/src/github.com/timchunght/timlink
 RUN go install github.com/timchunght/timlink
 
 EXPOSE 8080
-ENV PORT 8080
 # Run the golang-docker command when the container starts.
 ENTRYPOINT /go/bin/timlink
 
