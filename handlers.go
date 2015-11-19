@@ -51,11 +51,9 @@ func ItemCreate(w http.ResponseWriter, r *http.Request) {
 	var item models.Item
 	// fmt.Println(item)
 
-	name := r.URL.Query().Get("name")
 	url := r.URL.Query().Get("url")
 
-	if name != "" && url != "" {
-		item.Name = string(name)
+	if url != "" {
 		item.Url = string(url)
 
 		t := item.RepoCreateItem()

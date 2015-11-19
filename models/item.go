@@ -9,7 +9,7 @@ type Item struct {
 	Id        bson.ObjectId `bson:"_id,omitempty" json:"id"`
 	UID       string        `json:"uid"`
 	Url       string        `json:"url"`
-	Name      string        `json:"name"`
+	Title   	string        `json:"title"`
 	CreatedAt time.Time     `json:"created_at"`
 }
 
