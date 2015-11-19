@@ -49,6 +49,12 @@ var routes = Routes{
 		LinkCreate,
 	},
 	Route{
+		"LinkCreate",
+		"GET",
+		"/shorten",
+		LinkCreate,
+	},
+	Route{
 		"LinkShow",
 		"GET",
 		"/links/{hash}",
