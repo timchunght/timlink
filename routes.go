@@ -4,7 +4,7 @@ import "net/http"
 
 type Route struct {
 	Name        string
-	Method      string
+	Methods     []string
 	Pattern     string
 	HandlerFunc http.HandlerFunc
 }
@@ -14,7 +14,7 @@ type Routes []Route
 var routes = Routes{
 	Route{
 		"Index",
-		"GET",
+		[]string{"GET"},
 		"/",
 		Index,
 	},
@@ -44,25 +44,19 @@ var routes = Routes{
 	// },
 	Route{
 		"LinkCreate",
-		"POST",
-		"/shorten",
-		LinkCreate,
-	},
-	Route{
-		"LinkCreate",
-		"GET",
+		[]string{"GET", "POST"},
 		"/shorten",
 		LinkCreate,
 	},
 	Route{
 		"LinkShow",
-		"GET",
+		[]string{"GET"},
 		"/links/{hash}",
 		LinkShow,
 	},
 	Route{
 		"LinkRedirect",
-		"GET",
+		[]string{"GET"},
 		"/{hash}",
 		LinkRedirect,
 	},
