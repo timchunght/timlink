@@ -1,8 +1,9 @@
 # Timlink
 	
+
 Development:
 
-	go get
+	go get github.com/codegangsta/gin
 	gin -p 5000
 
 Build and Deploy:
@@ -42,8 +43,8 @@ We are currently using ``godep`` to manage dependencies. All dependencies are tr
 For example, I have a package in the same project named ``connection`` and my old project name is ``tim``, I will have to reference ``connection`` pacakge in my ``main.go`` as ``tim/connection``. Now the directory name is ``timothy`` and I will have to change it to ``timothy/connection`` and then run the following,
 
 	godep save -r ./...
-
-``godep`` is not yet smart enough to distinguish whether the package belongs to the same project or is an external dependency.
+		
+``godep`` is not smart enough yet to distinguish whether the package belongs to the same project or is an external dependency.
 
 Go Debugging
 ---
@@ -55,15 +56,15 @@ Install Godebug by running:
 	go get github.com/mailgun/godebug
 
 Insert a breakpoint anywhere in a source file you want to debug:
-
+	
 	_ = "breakpoint"
 
-Replace pkgs with the packages we are will be debugging if it is not the ``main`` package
+Replace ``<pkgs>`` with the packages we will be debugging if it is not the ``main`` package
 
 	godebug build -instrument <pkgs>
 
 For example:
-
+	
 	godebug build -instrument planit/connection
 
 godebug will generate a binary named ``yourprojectname.debug``, run that binary with the necessary arguments or environment variables and use it as you would binding.pry
@@ -71,3 +72,4 @@ godebug will generate a binary named ``yourprojectname.debug``, run that binary 
 For example,
 
 	PORT=8080 ./planit.debug
+
