@@ -1,6 +1,9 @@
 {
-	"ImportPath": "timlink",
-	"GoVersion": "go1.5",
+	"ImportPath": "mesh-models-api",
+	"GoVersion": "go1.6",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/gorilla/context",
@@ -14,14 +17,6 @@
 			"ImportPath": "github.com/joho/godotenv",
 			"Comment": "v1-10-g4ed1339",
 			"Rev": "4ed13390c0acd2ff4e371e64d8b97c8954138243"
-		},
-		{
-			"ImportPath": "github.com/yhat/scrape",
-			"Rev": "47d070048ae58bf228dfdfcfaf1d1c6abc00620e"
-		},
-		{
-			"ImportPath": "golang.org/x/net/html",
-			"Rev": "b4e17d61b15679caf2335da776c614169a1b4643"
 		},
 		{
 			"ImportPath": "gopkg.in/mgo.v2",

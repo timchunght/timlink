@@ -14,8 +14,8 @@ import (
 	"strings"
 	"sync"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 
 	crand "crypto/rand"
 	mrand "math/rand"

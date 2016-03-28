@@ -3,8 +3,8 @@ package txn
 import (
 	"fmt"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 )
 
 func flush(r *Runner, t *transaction) error {

@@ -1,10 +1,10 @@
 package connection
 
 import (
-	"timlink/Godeps/_workspace/src/github.com/joho/godotenv"
 	"log"
+	"mesh-models-api/Godeps/_workspace/src/github.com/joho/godotenv"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
 	"os"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
 )
 
 type DbConfig struct {

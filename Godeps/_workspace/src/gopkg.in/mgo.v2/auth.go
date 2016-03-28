@@ -34,8 +34,8 @@ import (
 	"fmt"
 	"sync"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/internal/scram"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/internal/scram"
 )
 
 type authCmd struct {

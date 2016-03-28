@@ -2,10 +2,10 @@ package models
 
 import (
 	"log"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 	// "timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
-	"timlink/connection"
-	"timlink/helpers"
+	"mesh-models-api/connection"
+	"mesh-models-api/helpers"
 	"time"
 )
 
@@ -31,7 +31,7 @@ func RepoFindLink(hash string) Link {
 		return result
 		log.Fatal(err)
 	}
-	
+
 	return result
 }
 
@@ -69,10 +69,9 @@ func (l Link) RepoCreateLink() Link {
 func RepoDestroyLink(id string) error {
 
 	c, _ := connection.GetCollection("links")
-	
+
 	return c.Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 }
-
 
 // func (t *Link) ParseUrl() string {
 // 	resp, err := http.Get(t.Url)
@@ -89,7 +88,7 @@ func RepoDestroyLink(id string) error {
 // 	  t.Title = scrape.Text(title)
 // 		return scrape.Text(title)
 // 	} else {
-		
+
 // 		return ""
 // 	}
 // }

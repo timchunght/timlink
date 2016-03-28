@@ -3,10 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"mesh-models-api/Godeps/_workspace/src/github.com/gorilla/mux"
+	"mesh-models-api/models"
 	"net/http"
-	"timlink/Godeps/_workspace/src/github.com/gorilla/mux"
-	"timlink/models"
-	// "timlink/connection"
+	// "mesh-models-api/connection"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {

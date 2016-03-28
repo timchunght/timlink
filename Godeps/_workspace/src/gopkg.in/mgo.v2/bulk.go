@@ -3,7 +3,7 @@ package mgo
 import (
 	"bytes"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 )
 
 // Bulk represents an operation that can be prepared with several

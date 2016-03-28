@@ -11,7 +11,7 @@ import (
 	"path"
 	"regexp"
 
-	"timlink/Godeps/_workspace/src/github.com/gorilla/context"
+	"mesh-models-api/Godeps/_workspace/src/github.com/gorilla/context"
 )
 
 // NewRouter returns a new router instance.

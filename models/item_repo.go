@@ -6,7 +6,7 @@ package models
 // 	"log"
 // 	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 // 	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
-// 	"timlink/connection"
+// 	"mesh-models-api/connection"
 // 	"time"
 // 	"timlink/Godeps/_workspace/src/github.com/yhat/scrape"
 //   "timlink/Godeps/_workspace/src/golang.org/x/net/html"
@@ -86,7 +86,7 @@ package models
 // 	  t.Title = scrape.Text(title)
 // 		return scrape.Text(title)
 // 	} else {
-		
+
 // 		return ""
 // 	}
 // }

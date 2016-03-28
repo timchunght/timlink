@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"timlink/Godeps/_workspace/src/github.com/gorilla/mux"
+	"mesh-models-api/Godeps/_workspace/src/github.com/gorilla/mux"
 )
 
 func NewRouter() *mux.Router {

@@ -8,7 +8,7 @@ package autoload
 	And bob's your mother's brother
 */
 
-import "timlink/Godeps/_workspace/src/github.com/joho/godotenv"
+import "mesh-models-api/Godeps/_workspace/src/github.com/joho/godotenv"
 
 func init() {
 	godotenv.Load()

@@ -2,10 +2,10 @@ package main
 
 import (
 	"log"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
+	"mesh-models-api/connection"
 	"net/http"
 	"os"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
-	"timlink/connection"
 )
 
 var (

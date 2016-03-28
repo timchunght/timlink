@@ -6,7 +6,7 @@ import (
 	"sort"
 	"sync/atomic"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 )
 
 var (

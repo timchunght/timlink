@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"gopkg.in/tomb.v2"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
 )
 
 // WARNING: This package was replaced by mgo.v2/dbtest.

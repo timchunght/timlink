@@ -35,7 +35,7 @@ import (
 	"sync"
 	"time"
 
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 )
 
 // ---------------------------------------------------------------------------

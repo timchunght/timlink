@@ -7,7 +7,7 @@ import (
 
 	"strings"
 
-	"timlink/Godeps/_workspace/src/github.com/joho/godotenv"
+	"mesh-models-api/Godeps/_workspace/src/github.com/joho/godotenv"
 )
 
 func main() {

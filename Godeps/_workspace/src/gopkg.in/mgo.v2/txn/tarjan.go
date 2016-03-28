@@ -1,8 +1,8 @@
 package txn
 
 import (
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 	"sort"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2/bson"
 )
 
 func tarjanSort(successors map[bson.ObjectId][]bson.ObjectId) [][]bson.ObjectId {

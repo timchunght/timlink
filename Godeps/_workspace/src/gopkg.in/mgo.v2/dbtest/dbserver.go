@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"gopkg.in/tomb.v2"
-	"timlink/Godeps/_workspace/src/gopkg.in/mgo.v2"
+	"mesh-models-api/Godeps/_workspace/src/gopkg.in/mgo.v2"
 )
 
 // DBServer controls a MongoDB server process to be used within test suites.
