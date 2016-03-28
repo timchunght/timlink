@@ -14,3 +14,8 @@ func RandomString(strlen int) string {
 	}
 	return string(result)
 }
+
+type JsonErr struct {
+	Code int    `json:"code"`
+	Text string `json:"text"`
+}

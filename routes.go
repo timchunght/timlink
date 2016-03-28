@@ -1,6 +1,10 @@
 package main
 
-import "net/http"
+import (
+
+	"net/http"
+	"mesh-models-api/controllers"
+)
 
 type Route struct {
 	Name        string
@@ -16,48 +20,19 @@ var routes = Routes{
 		"Index",
 		[]string{"GET"},
 		"/",
-		Index,
+		controllers.Index,
 	},
-	// Route{
-	// 	"ItemIndex",
-	// 	"GET",
-	// 	"/items",
-	// 	ItemIndex,
-	// },
-	// Route{
-	// 	"ItemCreate",
-	// 	"POST",
-	// 	"/items",
-	// 	ItemCreate,
-	// },
-	// Route{
-	// 	"ItemShow",
-	// 	"GET",
-	// 	"/items/{itemId}",
-	// 	ItemShow,
-	// },
-	// Route{
-	// 	"ItemDestroy",
-	// 	"DELETE",
-	// 	"/items/{itemId}",
-	// 	ItemDestroy,
-	// },
 	Route{
-		"LinkCreate",
+		"ModelCreate",
 		[]string{"GET", "POST"},
-		"/shorten",
-		LinkCreate,
+		"/models",
+		controllers.ModelCreate,
 	},
 	Route{
-		"LinkShow",
+		"ModelShow",
 		[]string{"GET"},
-		"/links/{hash}",
-		LinkShow,
+		"/models/{id}",
+		controllers.ModelShow,
 	},
-	Route{
-		"LinkRedirect",
-		[]string{"GET"},
-		"/{hash}",
-		LinkRedirect,
-	},
+
 }

@@ -61,7 +61,7 @@ func (dbConf *DbConfig) parseConfig() {
 
 	dbConf.Url = os.Getenv("MONGO_URL")
 	if dbConf.Url == "" {
-		dbConf.Url = "mongodb://localhost:27017"
+		dbConf.Url = "mongodb://localhost:27017/mesh-models-api-dev"
 	}
 
 }
